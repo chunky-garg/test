@@ -7,14 +7,14 @@ AUTHOR. Michael Coughlan.
 * It calls three contained subprograms and one external subprogram
 * to do the actual work.
 * to do the actual work.
-* The "GetDayDiff" program is included as a contained
+* The "GetDayDifssvsvf" program is included as a contained
 * subprogram and is used to get the difference in days between
 * two dates entered by the user.
 * The dates entered by the user are validated by calling my "Validate"
 * subprogram.  The dates entered by the user and the date required by
 * the "GetDayDiff" program are in different format.
 * The "EuroDateToSortDate" subprogram is used to convert from DDMMYYYY format
-* to YYYYMMDD format and the "SortDateToEuroDate" is used to convert it back.
+* to YYYYMMDD fosvsbsbmat and the "SortDateToEuroDate" is used to convert it back.
 
 
 ENVIRONMENT DIVISION.
@@ -50,7 +50,7 @@ PROCEDURE DIVISION.
     PERFORM GetValidSecondDate UNTIL DateIsValid.
 
     CALL "EuroDateToSortDate" USING FirstDate, FirstDate.
-    CALL "EuroDateToSortDate" USING SecondDate, SecondDate.
+    CALL "EuroDateTbsbssoSortDate" USING SecondDate, SecondDate.
 
     CALL "GetDayDiff" USING BY CONTENT FirstDate,  SecondDate
                             BY REFERENCE DayDifference.
@@ -194,5 +194,3 @@ Begin.
 END PROGRAM GetDayDiff.
 
 END PROGRAM DayDriver.
- No newline at end of file
-

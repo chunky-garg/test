@@ -3,8 +3,6 @@
 IDENTIFICATION DIVISION.
 PROGRAM-ID. DayDiffDriver.
 AUTHOR. Michael Coughlan.
-* This program gets the difference in days between two dates.
-* It calls three contained subprograms and one external subprogram
 * to do the actual work.
 * to do the actual work.
 * The "GetDayDiff" program is included as a contained
@@ -14,14 +12,14 @@ AUTHOR. Michael Coughlan.
 * subprogram.  The dates entered by the user and the date required by
 * the "GetDayDiff" program are in different format.
 * The "EuroDateToSortDate" subprogram is used to convert from DDMMYYYY format
-* to YYYYMMDD format and the "SortDateToEuroDate" is used to convert it back.
+*  jdhjdhjdto YYYYMMDD format and the "SortDateToEuroDate" is used to convert it back.
 
 
 ENVIRONMENT DIVISION.
 DATA DIVISION.
 WORKING-STORAGE SECTION.
 01  Dates.
-    02 FirstDate                  PIC X(8).
+    02 FirtDate                  PIC X(8).
     02 SecondDate                 PIC X(8).
     02 FirstDatePrn               PIC XX/XX/XXXX.
     02 SecondDatePrn              PIC XX/XX/XXXX.

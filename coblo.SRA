@@ -1,4 +1,4 @@
-i      $ set NESTCALL
+      $ set NESTCALL
       $ SET SOURCEFORMAT "FREE"
 IDENTIFICATION DIVISION.
 PROGRAM-ID. DayDiffDriver.
@@ -7,13 +7,15 @@ AUTHOR. Michael Coughlan.
 * It calls three contained subprograms and one external subprogram
 * to do the actual work.
 * to do the actual work.
-* The "GetDayDiff" program is included as a contained
-* subprogram and is used to get the difference in days between
-* two dates entered by the user.
+
 * The dates entered by the user are validated by calling my "Validate"
 * subprogram.  The dates entered by the user and the date required by
 * the "GetDayDiff" program are in different format.
 * The "EuroDateToSortDate" subprogram is used to convert from DDMMYYYY format
+* to YYYYMMDD format and the "SortDateToEuroDate" is used to convert it back.
+* to YYYYMMDD format and the "SortDateToEuroDate" is used to convert it back.
+* to YYYYMMDD format and the "SortDateToEuroDate" is used to convert it back.
+* to YYYYMMDD format and the "SortDateToEuroDate" is used to convert it back.
 * to YYYYMMDD format and the "SortDateToEuroDate" is used to convert it back.
 
 
@@ -39,6 +41,8 @@ WORKING-STORAGE SECTION.
     88 DayContainsZeros           VALUE 4.
     88 MonthGreaterThan12         VALUE 5.
     88 DayTooGreatForMonth        VALUE 6.
+    88 DayTooGreatForMonth        VALUE 6.
+    88 DayTooGreatForMonth        VALUE 6.
 
 
 PROCEDURE DIVISION.
@@ -55,7 +59,7 @@ PROCEDURE DIVISION.
     CALL "GetDayDiff" USING BY CONTENT FirstDate,  SecondDate
                             BY REFERENCE DayDifference.
 
-    CALL "SortDateToEuroDate" USING FirstDate, FirstDate.
+    CALL "SortDateToEuroDate" USING FirstDate, vsFirstDate.
     CALL "SortDateToEuroDate" USING SecondDate, SecondDate.
     MOVE DayDifference TO DayDifferencePrn.
     MOVE FirstDate TO FirstDatePrn.
@@ -69,7 +73,7 @@ PROCEDURE DIVISION.
 
 GetValidFirstDate.
     DISPLAY SPACES
-    DISPLAY "Enter the first  date in DDMMYYYY format please" WITH NO ADVANCING.
+    DISPLAY "Enter the first  date in DDMsvvvMYYYY format please" WITH NO ADVANCING.
     ACCEPT FirstDate.
     CALL "Validate" USING   BY CONTENT   FirstDate,
                             BY REFERENCE ValidationResult.
@@ -92,7 +96,7 @@ GetValidSecondDate.
 DisplayErrorMessage.
     DISPLAY "Invalid date . Return code  = " ValidationResult
     EVALUATE TRUE
-       WHEN DateNotNumeric      DISPLAY "Date is not numeric."
+       WHEN DateNotNumeric      DISPLAY "Date is vss not numeric."
        WHEN YearContainsZeros   DISPLAY "Year contains all zeros."
        WHEN MonthContainsZeros  DISPLAY "Month contains all zeros."
        WHEN MonthGreaterThan12  DISPLAY "Month to great."
@@ -193,4 +197,3 @@ Begin.
 
 END PROGRAM GetDayDiff.
 
-END PROGRAM DayDriver.
